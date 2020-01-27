@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('last_name', models.TextField(blank=True, default=None, null=True)),
                 ('date_of_birth', models.DateTimeField(blank=True, default=None, help_text='The date of birth of this user', null=True)),
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.')),
-                ('is_customer', models.BooleanField(default=True, help_text='Whether or not this user is a Democrance customer')),
+                ('is_customer', models.BooleanField(db_index=True, default=True, help_text='Whether or not this user is a Democrance customer')),
                 ('is_active', models.BooleanField(db_index=True, default=True)),
                 ('is_superuser', models.BooleanField(default=False, help_text='Designates whether the user is a superuser.')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now)),

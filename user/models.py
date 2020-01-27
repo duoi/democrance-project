@@ -52,6 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text='Designates whether the user can log into this admin site.',
     )
     is_customer = models.BooleanField(
+        db_index=True,
         default=True,
         help_text="Whether or not this user is a Democrance customer"
     )
