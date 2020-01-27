@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date_created', models.DateTimeField(default=django.utils.timezone.now, help_text='The date that this model was created')),
                 ('date_updated', models.DateTimeField(default=None, help_text='The date that this model was updated', null=True)),
-                ('name', models.TextField(help_text='The name of this policy type')),
+                ('name', models.TextField(db_index=True, help_text='The name of this policy type')),
             ],
             options={
                 'abstract': False,
@@ -35,8 +35,8 @@ class Migration(migrations.Migration):
                 ('date_updated', models.DateTimeField(default=None, help_text='The date that this model was updated', null=True)),
                 ('premium', models.IntegerField(blank=True, default=None, help_text='The premium to be paid for this cover', null=True)),
                 ('cover', models.IntegerField(blank=True, default=None, help_text='The amount that this policy seeks to cover', null=True)),
-                ('customer', models.ForeignKey(help_text='The customer that this policy belongs to', on_delete=django.db.models.deletion.DO_NOTHING, related_name='policies', to=settings.AUTH_USER_MODEL)),
-                ('type', models.ForeignKey(help_text='The type of policy associated with this cover', on_delete=django.db.models.deletion.DO_NOTHING, to='policy.PolicyType')),
+                ('customer', models.ForeignKey(db_index=True, help_text='The customer that this policy belongs to', on_delete=django.db.models.deletion.DO_NOTHING, related_name='policies', to=settings.AUTH_USER_MODEL)),
+                ('type', models.ForeignKey(db_index=True, help_text='The type of policy associated with this cover', on_delete=django.db.models.deletion.DO_NOTHING, to='policy.PolicyType')),
             ],
             options={
                 'abstract': False,

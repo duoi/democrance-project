@@ -11,7 +11,8 @@ class PolicyType(ModelWithTimestamp):
     require database migrations, and also require programmatic insertion.
     """
     name = models.TextField(
-        help_text="The name of this policy type"
+        help_text="The name of this policy type",
+        db_index=True
     )
 
     def __str__(self):
@@ -26,12 +27,14 @@ class Policy(ModelWithTimestamp):
         to='user.User',
         on_delete=models.DO_NOTHING,
         related_name="policies",
-        help_text="The customer that this policy belongs to"
+        help_text="The customer that this policy belongs to",
+        db_index=True
     )
     type = models.ForeignKey(
         PolicyType,
         on_delete=models.DO_NOTHING,
-        help_text="The type of policy associated with this cover"
+        help_text="The type of policy associated with this cover",
+        db_index=True
     )
     premium = models.IntegerField(
         default=None,
